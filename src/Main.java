@@ -38,24 +38,24 @@ void main() {
 
 
     // ORDINI
-    Order o1 = new Order(OrderStatus.IN_LAVORAZIONE, c1);
+    Order o1 = new Order(OrderStatus.inLavorazione, c1);
     o1.addProduct(p1);
     o1.addProduct(p9);
     o1.addProduct(p20);
     o1.addProduct(p13);
 
-    Order o2 = new Order(OrderStatus.CONFERMATO, c2);
+    Order o2 = new Order(OrderStatus.confermato, c2);
     o2.addProduct(p2);
     o2.addProduct(p11);
     o2.addProduct(p6);
 
-    Order o3 = new Order(OrderStatus.SPEDITO, c3);
+    Order o3 = new Order(OrderStatus.spedito, c3);
     o3.addProduct(p5);
     o3.addProduct(p15);
     o3.addProduct(p17);
     o3.addProduct(p4);
 
-    Order o4 = new Order(OrderStatus.IN_ATTESA, c4);
+    Order o4 = new Order(OrderStatus.inAttesa, c4);
     o4.addProduct(p8);
     o4.addProduct(p18);
     o4.addProduct(p3);
@@ -72,9 +72,12 @@ void main() {
 
     //ESERCIZIO 2
     System.out.println("---------------Baby---------------------");
-    // LISTA DI PRODOTTI CON CATEGORIA BABY
-    List<Product> soloProdottiPerBaby = listaProdotti.stream().filter(product -> product.getCategory().equals(Categories.baby)).toList();
-    soloProdottiPerBaby.stream().forEach(product -> System.out.println(product));
+    // LISTA DI ORDINI CON PRODOTTI DI CATEGORIA BABY
+//    List<Product> soloProdottiPerBaby = listaProdotti.stream().filter(product -> product.getCategory().equals(Categories.baby)).toList();
+//    soloProdottiPerBaby.stream().forEach(product -> System.out.println(product));
+    List<Order> soloOrdiniConProdottiBaby = listaOrdini.stream().filter(order -> order.getProducts()
+            .stream().anyMatch(product -> product.getCategory()
+                    .equals(Categories.baby))).toList();
 
     //ESERCIZIO 3
     System.out.println("---------------Boys---------------------");
